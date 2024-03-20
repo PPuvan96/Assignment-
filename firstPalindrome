@@ -1,0 +1,52 @@
+package firstpalindrome;
+
+	import java.util.Scanner;
+
+	public class Main {
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+
+	        System.out.print("Enter the number of words: ");
+	        int n = scanner.nextInt();
+	        scanner.nextLine(); 
+
+	        String[] words = new String[n];
+	        System.out.println("Enter the words:");
+	        for (int i = 0; i < n; i++) {
+	            words[i] = scanner.nextLine();
+	        }
+
+	        String palindrome = findFirstPalindrome(words);
+	        if (palindrome != null) {
+	            System.out.println("First palindrome word: " + palindrome);
+	        } else {
+	            System.out.println("No palindrome word found.");
+	        }
+
+	        scanner.close();
+	    }
+
+	    public static String findFirstPalindrome(String[] words) {
+	        for (String word : words) {
+	            if (isPalindrome(word)) {
+	                return word;
+	            }
+	        }
+	        return null;
+	    }
+
+	    public static boolean isPalindrome(String word) {
+	        int left = 0;
+	        int right = word.length() - 1;
+
+	        while (left < right) {
+	            if (word.charAt(left) != word.charAt(right)) {
+	                return false;
+	            }
+	            left++;
+	            right--;
+	        }
+	        return true;
+	    }
+	}
+
