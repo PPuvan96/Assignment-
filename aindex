@@ -1,0 +1,40 @@
+package aindex;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of words: ");
+        int n = scanner.nextInt();
+        scanner.nextLine(); 
+
+        String[] words = new String[n];
+        System.out.println("Enter the words:");
+        for (int i = 0; i < n; i++) {
+            words[i] = scanner.nextLine();
+        }
+
+        List<Integer> indexes = findWordsWithA(words);
+        if (!indexes.isEmpty()) {
+            System.out.println("Indexes of words containing 'a': " + indexes);
+        } else {
+            System.out.println("No words containing 'a' found.");
+        }
+
+        scanner.close();
+    }
+
+    public static List<Integer> findWordsWithA(String[] words) {
+        List<Integer> indexes = new ArrayList<>();
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].contains("a")) {
+                indexes.add(i);
+            }
+        }
+        return indexes;
+    }
+}
+
